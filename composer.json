@@ -16,7 +16,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/Zizaco/ardent.git"
+            "url": "https://github.com/zizaco/ardent.git"
         }
     ],
     "require": {
