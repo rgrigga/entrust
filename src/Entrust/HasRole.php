@@ -13,8 +13,8 @@ trait HasRole
     public function roles($options=[])
     {
         if(empty($options['key'])){
-//            $options['key']=strtolower(get_class($this))."_id";
-            $options['key']=$this->getKey();
+            $options['key']=strtolower(get_class($this))."_id";
+//            $options['key']=$this->getKey();
         }
         return $this->belongsToMany(Config::get('entrust::role'), Config::get('entrust::assigned_roles_table'), $options['key'], 'role_id');
     }
