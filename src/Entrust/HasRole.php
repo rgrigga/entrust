@@ -10,8 +10,11 @@ trait HasRole
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function roles()
+    public function roles($options=[])
     {
+        if(empty($options['key'])){
+            $options['key']=strtolower(get_class($this))."_id";
+        }
         return $this->belongsToMany(Config::get('entrust::role'), Config::get('entrust::assigned_roles_table'), 'user_id', 'role_id');
     }
 
