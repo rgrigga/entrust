@@ -1,3 +1,77 @@
+
+Here's how to set up your composer.json file for non-packagist packages, 3 ways, depending on where you want to load it from.
+Please be sure to configure your composer.json file for the environment you want.
+
+##Local##
+###vagrantServer###
+The default composer.json configuration is for vagrant.
+
+Maybe all the people you share with also use the same vagrantServer. `/Code` on your virtual machine is synced with `~/Code` on your host machine. You run commands like `composer update` from within the vm (after `vagrant ssh`).
+So does everyone else on your team. You just ran this on your host machine:
+
+    cd ~/Code
+    git clone https://github.com/rgrigga/entrust
+
+If this sounds like you, this repositories.url is what you need:
+
+    "repositories": [
+        {
+            "type":"vcs",
+            "url":"/Code/entrust"
+        },
+        "require": {
+            "php":">=5.4.0",
+            "laravel/framework": "4.2.*",
+            "zizaco/confide": "dev-master",
+            "rgrigga/entrust": "dev-master",
+            "robclancy/presenter": "1.2.*",
+            "codesleeve/laravel-stapler": "dev-master"
+        },
+
+the 'require' points to your namespace, and the 'url' points to your virtual 'local' path.
+
+###
+We can load the code from our traditional local environment running local LAMP or XAMPP or what have you:
+
+    "repositories": [
+        {
+            "type":"vcs",
+            "url":"/home/ryan/Code/entrust"
+        },
+        "require": {
+            "php":">=5.4.0",
+            "laravel/framework": "4.2.*",
+            "zizaco/confide": "dev-master",
+            "rgrigga/entrust": "dev-master",
+            "robclancy/presenter": "1.2.*",
+            "codesleeve/laravel-stapler": "dev-master"
+        },
+
+As you can see, this is a traditional `/home/user` path.
+
+###github###
+You may run `composer update` from a remote webserver, or you share the project with others.  This is the most common and most portable option if you've no desire to host or make changes to the core:
+To use from github, something like this:
+
+    "repositories": [
+        {
+            "type":"vcs",
+            "url":"https://github.com/rgrigga/entrust.git",
+        },
+        "require": {
+            "php":">=5.4.0",
+            "laravel/framework": "4.2.*",
+            "zizaco/confide": "dev-master",
+            "rgrigga/entrust": "dev-master",
+            "robclancy/presenter": "1.2.*",
+            "codesleeve/laravel-stapler": "dev-master"
+        },
+
+Of course you can use your own fork!
+
+The primary benefit to using your own fork (the same reason I created this one) is that you can edit the core code of this package and isolate the changes you make.
+
+
 # Entrust (Laravel4 Package)
 
 ![Entrust Poster](https://dl.dropbox.com/u/12506137/libs_bundles/entrust.png)
