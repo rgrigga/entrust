@@ -1,6 +1,6 @@
 {
-    "name": "zizaco/entrust",
-    "description": "This package provides a flexible way to add Role-based Permissions to Laravel 4",
+    "name": "rgrigga/entrust",
+    "description": "This fork of zizaco/entrust allows you to attach to other object types.",
     "keywords": ["laravel","illuminate","auth","roles"],
     "license": "MIT",
     "authors": [
