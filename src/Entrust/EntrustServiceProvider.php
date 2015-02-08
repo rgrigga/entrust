@@ -18,6 +18,9 @@ class EntrustServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('entrust.php'),
+        ]);
         $this->commands('command.entrust.migration');
     }
 
